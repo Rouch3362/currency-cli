@@ -1,5 +1,5 @@
 build:
-	go build -o bin/currency main.go
+	go build -o bin/currency
 
 run: build
 	bin/currency
