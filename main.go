@@ -6,9 +6,9 @@ import (
 )
 
 func main() {
-	args := []string{"btc","eth","usdt"}
-	if len(os.Args) > 1 {
-		args = os.Args[1:]
+	args := os.Args[1:]
+	if len(os.Args) < 2 {
+		args = []string{"btc","eth","usdt"}
 		fmt.Println("If you do not enter any currency code the defaults are: BTC,ETH,USDT")
 	}
 
