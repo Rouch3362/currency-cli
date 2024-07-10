@@ -16,6 +16,6 @@ func main() {
 	responses := IterateOverCurrencies(args)
 
 	for index, response := range responses {
-		response.ShowMessage(os.Args[index+1])
+		response.ShowMessage(args[index])
 	}
 }
