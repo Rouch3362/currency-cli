@@ -1,8 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"os"
+)
 
 func main() {
-	res := CallApi("usd")
-	fmt.Println(res)
+
+	responses := IterateOverCurrencies(os.Args[1:])
+	
+	for index, response := range responses {
+		response.ShowMessage(os.Args[index+1])
+	}
 }
