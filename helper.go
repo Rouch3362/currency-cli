@@ -15,7 +15,9 @@ import (
 func CallApi(currencyCode string) (map[string]APIResponse , *Error) {
 	godotenv.Load()
 	apiKey := os.Getenv("API_KEY")
-	
+	if apiKey == "" {
+		log.Fatal("api key is missing")
+	}
 	// call the api
 	url  := fmt.Sprintf("http://api.navasan.tech/latest/?api_key=%s&item=%s",apiKey,currencyCode)
 	res , err := http.Get(url)
@@ -47,7 +49,7 @@ func IterateOverCurrencies(currencieCodes []string) []Response {
 	res := []Response{}
 	for _,currencyCode := range currencieCodes {
 		result, err := CallApi(currencyCode)
-		
+
 		if err != nil {
 			res = append(res , err)
 		} else {
