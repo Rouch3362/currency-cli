@@ -38,7 +38,7 @@ func (a *APIResponse) ShowMessage(currencyCode string) {
 	
 	// if price goes up
 	if a.Change > 0 {
-		color.Blue("▲ %s" , message)
+		color.Green("▲ %s" , message)
 	} else if a.Change < 0 { // if price goes down
 		color.Red("▼ %s" , message)
 	} else { // if price stays
