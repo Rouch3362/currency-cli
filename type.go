@@ -26,11 +26,15 @@ func (a *APIResponse) ShowMessage(currencyCode string) {
 	// make price in human readable format
 	if err != nil {
 		PriceInHumanReadableFormat = a.Price
+		err = nil
 	} else {
 		PriceInHumanReadableFormat = humanize.Comma(priceInt)
 	}
+
+	priceChangeHumaneReadable := humanize.Comma(int64(a.Change))
+
 	// format a message
-	message := fmt.Sprintf("Price Of %s at %s - %sT with %.2fR of Changes." ,currencyCode, a.Date , PriceInHumanReadableFormat , a.Change)
+	message := fmt.Sprintf("Price Of %s at %s - %sT with %sT of Changes." ,currencyCode, a.Date , PriceInHumanReadableFormat , priceChangeHumaneReadable)
 	
 	// if price goes up
 	if a.Change > 0 {
